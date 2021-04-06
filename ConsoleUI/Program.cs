@@ -1,4 +1,6 @@
-﻿using DataAccess.Concrete.InMemory;
+﻿using Business.Concrete;
+using DataAccess.Concrete.EntityFramework;
+using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
 using System;
 
@@ -17,15 +19,18 @@ namespace ConsoleUI
                 DailyPrice=1000,
                 Description="Toyota"
             };
+            EfCarDal efCarDal = new EfCarDal();
 
-            InMemoryCarDal inMemoryCar = new InMemoryCarDal();
-            inMemoryCar.Add(sample);
-            inMemoryCar.GetAll();
-            inMemoryCar.GetById(1);
+            CarManager carManager = new CarManager(efCarDal);
+
             
-            sample.DailyPrice = 800;
-            inMemoryCar.Update(sample);
-            inMemoryCar.Delete(sample);
+            var carSample=carManager.GetById(1);
+            Console.WriteLine(carSample.DailyPrice);
+            foreach (var item in carManager.GetAll())
+            {
+                Console.WriteLine(item.Description);
+            }
+            
             Console.Read();
 
 
