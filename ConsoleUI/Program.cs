@@ -12,12 +12,13 @@ namespace ConsoleUI
         {
             Car sample = new Car 
             { 
-                Id=3,
+               
                 BrandId=1,
                 ModelYear=2018,
                 ColorId=1,
                 DailyPrice=1000,
-                Description="Toyota"
+                Description="Toyota",
+                Name="FirstCar"
             };
             EfCarDal efCarDal = new EfCarDal();
 
@@ -26,11 +27,13 @@ namespace ConsoleUI
             
             var carSample=carManager.GetById(1);
             Console.WriteLine(carSample.DailyPrice);
+            
+
+            carManager.Add(sample);
             foreach (var item in carManager.GetAll())
             {
                 Console.WriteLine(item.Description);
             }
-            
             Console.Read();
 
 

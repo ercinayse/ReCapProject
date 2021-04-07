@@ -16,7 +16,15 @@ namespace Business.Concrete
         }
         public void Add(Car car)
         {
-            _carDal.Add(car);
+            if (car.Name.Length >= 2 && car.DailyPrice>0)
+            {
+                _carDal.Add(car);
+            }
+            else
+            {
+                Console.WriteLine("Car's name must be at least 2 character and daily price must be bigger than 0"); 
+                   
+            }
         }
 
         public void Delete(Car car)
