@@ -6,6 +6,7 @@ using System.Text;
 
 namespace Business.Abstract
 {
+    //
     public interface ICarService
     {
         Car GetById(int id);
